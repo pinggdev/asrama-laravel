@@ -6,7 +6,7 @@
         <h4 class="card-title">Jadwal</h4>
     </div>
     <div class="card-content">
-        <div class="card-body">
+        <div class="card-body">           
             <div class="row">
                 <div class="col-8 align-self-center">
                     <a href="{{ route('jadwal.create') }}" class="btn btn-primary btn-sm align-self-center">Tambah Jadwal</a>
@@ -29,6 +29,8 @@
                             $x = 1;
                         @endphp
                         @foreach ($jadwals as $jadwal)
+                            @if (Auth::user()->role === "siswa" && Auth::user()->id == $jadwal->user->id)
+                            
                             <tr>
                                 <td scope="row" style="vertical-align: middle;">{{$x}}</td>
                                 <td class="text-bold-500">{{ $jadwal->nama_kegiatan }}</td>
@@ -39,13 +41,36 @@
                                         @csrf
                                         @method('delete')
                                         <a href="{{ route('jadwal.edit', $jadwal->id) }}" class="btn btn-success btn-sm">Edit</a>
-                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                        @if (Auth::user()->role === "admin")     
+                                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                        @endif
                                     </form>
                                 </td>
                                 @php
                                     $x++;
                                 @endphp
                             </tr>
+                            @elseif (Auth::user()->role === "admin")
+                                <tr>
+                                    <td scope="row" style="vertical-align: middle;">{{$x}}</td>
+                                    <td class="text-bold-500">{{ $jadwal->nama_kegiatan }}</td>
+                                    <td class="text-bold-500">{{ $jadwal->tanggal_kegiatan }}</td>
+                                    <td class="text-bold-500">{{ $jadwal->user->name }}</td>
+                                    <td class="text-bold-500">
+                                        <form action="{{ route('jadwal.destroy', $jadwal->id) }}" method="POST">
+                                            @csrf
+                                            @method('delete')
+                                            <a href="{{ route('jadwal.edit', $jadwal->id) }}" class="btn btn-success btn-sm">Edit</a>
+                                            @if (Auth::user()->role === "admin")     
+                                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                            @endif
+                                        </form>
+                                    </td>
+                                    @php
+                                        $x++;
+                                    @endphp
+                                </tr>
+                            @endif
                         @endforeach
                     </tbody>
                 </table>

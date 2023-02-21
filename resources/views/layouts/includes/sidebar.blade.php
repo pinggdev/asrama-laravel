@@ -76,6 +76,22 @@
                 </li>
                 
                 @endif
+
+                @if (Auth::user()->role === "siswa" && Auth::user()->siswa)
+                    <li class="sidebar-item">
+                        <a href="{{ route('jadwal.index') }}" class='sidebar-link'>
+                            <i class="bi bi-hexagon-fill"></i>
+                            <span>Jadwal</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="{{ route('absen.index') }}" class='sidebar-link'>
+                            <i class="bi bi-hexagon-fill"></i>
+                            <span>Absen</span>
+                        </a>
+                    </li>
+                @endif
             </ul>
         </div>
         <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>

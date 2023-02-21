@@ -38,17 +38,24 @@
                                 <label>User</label>
                             </div>
                             <div class="col-md-8 form-group">
-                                <select class="form-control @error('user_id') {{ 'is-invalid' }} @enderror" name="user_id">
-                                    <option value="">Pilih User</option>
-                                    @foreach ($users as $user)
-                                        @if ($user->role == 'siswa')
-                                            <option value="{{ $user->id }}" {{ old('user_id') == $user->id ? 'selected' : '' }}>{{ $user->name }}</option>
-                                        @endif
-                                    @endforeach
-                                </select>
-                                @error('user_id')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
+                                @if (Auth::user()->role === "siswa" && Auth::user()->id == $jadwal->user->id)
+                                    <div class="col-md-8 form-group">
+                                        <input type="text" class="form-control" value="{{  $jadwal->user->name }}" readonly>
+                                        <input type="hidden" name="user_id" value="{{ $jadwal->user->id }}">
+                                    </div>
+                                @elseif(Auth::user()->role === "admin")
+                                    <select class="form-control @error('user_id') {{ 'is-invalid' }} @enderror" name="user_id">
+                                        <option value="">Pilih User</option>
+                                        @foreach ($users as $user)
+                                            @if ($user->role == 'siswa')
+                                                <option value="{{ $user->id }}" {{ old('user_id') == $user->id ? 'selected' : '' }}>{{ $user->name }}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
+                                    @error('user_id')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                @endif
                             </div>
                         </div>
                         

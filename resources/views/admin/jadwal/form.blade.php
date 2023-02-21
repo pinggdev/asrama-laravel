@@ -37,6 +37,10 @@
                                 <label>User</label>
                             </div>
                             <div class="col-md-8 form-group">
+                                @if (Auth::user()->role === "siswa")
+                                        <input type="text" class="form-control" value="{{  Auth::user()->name }}" readonly>
+                                        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                                @elseif(Auth::user()->role === "admin")
                                 <select class="form-control @error('user_id') {{ 'is-invalid' }} @enderror" name="user_id">
                                     <option value="">Pilih User</option>
                                     @foreach ($users as $user)
@@ -48,6 +52,7 @@
                                 @error('user_id')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
+                                @endif
                             </div>
                         </div>
                         <div class="row">

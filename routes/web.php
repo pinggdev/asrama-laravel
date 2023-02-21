@@ -20,14 +20,18 @@ use App\Http\Controllers\Auth\RegisterController;
 */
 
 
+Route::group(['middleware' => ['auth']], function () {
+    Route::resource('jadwal', JadwalController::class);
+    Route::resource('absen', AbsenController::class);
+});
+
 Route::group(['middleware' => ['auth', 'checkRole:admin']], function () {
     Route::resource('users', UserController::class);
     Route::resource('asrama', AsramaController::class);
     Route::resource('siswa', SiswaController::class);
-    Route::resource('jadwal', JadwalController::class);
-    Route::resource('absen', AbsenController::class);
 });
 
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\AdminController::class, 'index'])->name('home');
+
