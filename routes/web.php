@@ -17,18 +17,18 @@ use App\Http\Controllers\UserController;
 
 
 
-Route::post('register', [RegisterController::class, 'register']);
-Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+// Route::post('register', [RegisterController::class, 'register']);
+// Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 
 
-Route::middleware(['auth:sanctum', 'role:admin'])->group(function () {
-    Route::resource('users', UserController::class);
-});
+// Route::middleware(['auth:sanctum', 'role:admin'])->group(function () {
+//     Route::resource('users', UserController::class);
+// });
 
-Route::middleware(['auth:sanctum', 'role:siswa'])->group(function () {
-    // route untuk siswa
-});
+// Route::middleware(['auth:sanctum', 'role:siswa'])->group(function () {
+//     // route untuk siswa
+// });
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
