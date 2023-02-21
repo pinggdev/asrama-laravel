@@ -51,6 +51,18 @@
                         </li>
                     </ul>
                 </li>
+
+                <li class="sidebar-item  has-sub">
+                    <a href="#" class='sidebar-link'>
+                        <i class="bi bi-hexagon-fill"></i>
+                        <span>Asrama</span>
+                    </a>
+                    <ul class="submenu ">
+                        <li class="submenu-item ">
+                            <a href="{{ route('asrama.index') }}">Table</a>
+                        </li>
+                    </ul>
+                </li>
                 
                 @endif
             </ul>
