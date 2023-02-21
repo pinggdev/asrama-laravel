@@ -3,7 +3,7 @@
         <div class="sidebar-header">
             <div class="d-flex justify-content-between">
                 <div class="logo">
-                    <a href="index.html"><img src="assets/images/logo/logo.png" alt="Logo" srcset=""></a>
+                    <a href="/">Asrama</a>
                 </div>
                 <div class="toggler">
                     <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
@@ -38,6 +38,8 @@
                     </a>
                 </li>
 
+                @if (Auth::user()->role === "admin") 
+
                 <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-hexagon-fill"></i>
@@ -49,9 +51,8 @@
                         </li>
                     </ul>
                 </li>
-
-
-
+                
+                @endif
             </ul>
         </div>
         <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
