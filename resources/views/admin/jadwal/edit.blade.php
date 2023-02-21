@@ -41,7 +41,9 @@
                                 <select class="form-control @error('user_id') {{ 'is-invalid' }} @enderror" name="user_id">
                                     <option value="">Pilih User</option>
                                     @foreach ($users as $user)
-                                        <option value="{{ $user->id }}" {{ old('user_id', $jadwal->user_id) == $user->id ? 'selected' : '' }}>{{ $user->name }}</option>
+                                        @if ($user->role == 'siswa')
+                                            <option value="{{ $user->id }}" {{ old('user_id') == $user->id ? 'selected' : '' }}>{{ $user->name }}</option>
+                                        @endif
                                     @endforeach
                                 </select>
                                 @error('user_id')
