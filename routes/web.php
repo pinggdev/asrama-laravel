@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\AsramaController;
 use App\Http\Controllers\Auth\RegisterController;
 
@@ -28,6 +29,7 @@ use App\Http\Controllers\Auth\RegisterController;
 Route::group(['middleware' => ['auth', 'checkRole:admin']], function () {
     Route::resource('users', UserController::class);
     Route::resource('asrama', AsramaController::class);
+    Route::resource('siswa', SiswaController::class);
 });
 
 // Route::middleware(['auth:sanctum', 'role:siswa'])->group(function () {

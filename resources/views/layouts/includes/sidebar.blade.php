@@ -53,6 +53,13 @@
                         <span>Asrama</span>
                     </a>
                 </li>
+
+                <li class="sidebar-item">
+                    <a href="{{ route('siswa.index') }}" class='sidebar-link'>
+                        <i class="bi bi-hexagon-fill"></i>
+                        <span>Siswa</span>
+                    </a>
+                </li>
                 
                 @endif
             </ul>
