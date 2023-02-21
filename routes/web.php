@@ -21,9 +21,12 @@ use App\Http\Controllers\UserController;
 // Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 
 
-// Route::middleware(['auth:sanctum', 'role:admin'])->group(function () {
+// Route::group(['middleware' => ['auth', 'checkRole:admin']])->group(function () {
 //     Route::resource('users', UserController::class);
 // });
+Route::group(['middleware' => ['auth', 'checkRole:admin']], function () {
+    Route::resource('users', UserController::class);
+});
 
 // Route::middleware(['auth:sanctum', 'role:siswa'])->group(function () {
 //     // route untuk siswa
