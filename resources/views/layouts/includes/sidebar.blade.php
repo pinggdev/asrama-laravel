@@ -40,28 +40,18 @@
 
                 @if (Auth::user()->role === "admin") 
 
-                <li class="sidebar-item  has-sub">
-                    <a href="#" class='sidebar-link'>
+                <li class="sidebar-item">
+                    <a href="{{ route('users.index') }}" class='sidebar-link'>
                         <i class="bi bi-hexagon-fill"></i>
                         <span>Users</span>
                     </a>
-                    <ul class="submenu ">
-                        <li class="submenu-item ">
-                            <a href="{{ route('users.index') }}">Table</a>
-                        </li>
-                    </ul>
                 </li>
 
-                <li class="sidebar-item  has-sub">
-                    <a href="#" class='sidebar-link'>
+                <li class="sidebar-item">
+                    <a href="{{ route('asrama.index') }}" class='sidebar-link'>
                         <i class="bi bi-hexagon-fill"></i>
                         <span>Asrama</span>
                     </a>
-                    <ul class="submenu ">
-                        <li class="submenu-item ">
-                            <a href="{{ route('asrama.index') }}">Table</a>
-                        </li>
-                    </ul>
                 </li>
                 
                 @endif

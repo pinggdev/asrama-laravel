@@ -45,7 +45,7 @@ class AsramaController extends Controller
         ]);
         $asrama->save();
 
-        return redirect('/asramas')->with('success', 'Asrama created!');
+        return redirect('/asrama')->with('success', 'Asrama created!');
     }
 
     /**
@@ -65,9 +65,12 @@ class AsramaController extends Controller
      * @param  \App\Models\Asrama  $asrama
      * @return \Illuminate\Http\Response
      */
-    public function edit(Asrama $asrama)
+    public function edit($id)
     {
-        return view('admin.asrama.edit', compact('asrama'));
+        $asrama = Asrama::find($id);
+        return view('admin.asrama.edit', [
+            'asrama'     => $asrama,
+            ]);
     }
 
     /**
@@ -86,7 +89,7 @@ class AsramaController extends Controller
         $asrama->name = $request->get('name');
         $asrama->save();
 
-        return redirect('/asramas')->with('success', 'Asrama updated!');
+        return redirect('/asrama')->with('success', 'Asrama updated!');
     }
 
     /**
@@ -99,6 +102,6 @@ class AsramaController extends Controller
     {
         $asrama->delete();
 
-        return redirect('/asramas')->with('success', 'Asrama deleted!');
+        return redirect('/asrama')->with('success', 'Asrama deleted!');
     }
 }

@@ -34,7 +34,7 @@
                                     <form action="{{ route('asrama.destroy', $asrama->id) }}" method="POST">
                                         @csrf
                                         @method('delete')
-                                        <a href="{{ route('asramas.edit', $asrama->id) }}" class="btn btn-success btn-sm">Edit</a>
+                                        <a href="{{ route('asrama.edit', $asrama->id) }}" class="btn btn-success btn-sm">Edit</a>
                                         <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                                     </form>
                                 </td>
