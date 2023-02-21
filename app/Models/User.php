@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Siswa;
+use App\Models\Jadwal;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -46,5 +47,10 @@ class User extends Authenticatable
     public function siswa()
     {
         return $this->hasOne(Siswa::class);
+    }
+
+    public function jadwals()
+    {
+        return $this->hasMany(Jadwal::class);
     }
 }

@@ -60,6 +60,13 @@
                         <span>Siswa</span>
                     </a>
                 </li>
+
+                <li class="sidebar-item">
+                    <a href="{{ route('jadwal.index') }}" class='sidebar-link'>
+                        <i class="bi bi-hexagon-fill"></i>
+                        <span>Jadwal</span>
+                    </a>
+                </li>
                 
                 @endif
             </ul>
