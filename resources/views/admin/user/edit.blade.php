@@ -28,7 +28,7 @@
                                 <select class="form-select @error('role') {{ 'is-invalid' }} @enderror" id="basicSelect" name="role">
                                     <option value="">Pilih Role</option>    
                                     <option value="admin" @if($user->role == 'admin') selected @endif>Admin</option>    
-                                    <option value="member" @if($user->role == 'siswa') selected @endif>Siswa</option>    
+                                    <option value="siswa" @if($user->role == 'siswa') selected @endif>Siswa</option>    
                                 </select>
                                 @error('role')
                                     <span class="text-danger">{{ $message }}</span>
