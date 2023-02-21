@@ -19,6 +19,7 @@
                         <tr>
                             <th>NO</th>
                             <th>NAMA</th>
+                            <th>EMAIL</th>
                             <th>ASRAMA</th>
                             <th>ACTION</th>
                         </tr>
@@ -31,6 +32,7 @@
                             <tr>
                                 <td scope="row" style="vertical-align: middle;">{{$x}}</td>
                                 <td class="text-bold-500">{{ $siswa->user->name }}</td>
+                                <td class="text-bold-500">{{ $siswa->user->email }}</td>
                                 <td class="text-bold-500">{{ $siswa->asrama->name }}</td>
                                 <td class="text-bold-500">
                                     <form action="{{ route('siswa.destroy', $siswa->id) }}" method="POST">
