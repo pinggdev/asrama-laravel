@@ -12,6 +12,12 @@
 
             <div class="page-heading">
                 <h3>Dashboard</h3>
+                <h4>Selamat Datang {{Auth::user()->name}}</h4>
+                @if(Auth::user()->role === "admin")
+                    <p></p>
+                @elseif(!Auth::user()->siswa && Auth::user()->role === "siswa")
+                    <p>Anda belum terdaftar dalam asrama, hubungi admin!</p>
+                @endif
             </div>
             <div class="page-content">
                 @yield('content')
