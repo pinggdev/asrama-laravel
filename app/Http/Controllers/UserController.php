@@ -24,7 +24,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        return view('admin.user.create');
     }
 
     /**
@@ -61,7 +61,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return view('users.show', compact('user'));
+        // 
     }
 
     /**
@@ -70,9 +70,12 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit($id)
     {
-        return view('users.edit', compact('user'));
+        $user = User::find($id);
+        return view('admin.user.edit', [
+            'user'     => $user,
+            ]);
     }
 
     /**

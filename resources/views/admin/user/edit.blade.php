@@ -7,7 +7,7 @@
         </div>
         <div class="card-content">
             <div class="card-body">
-                <form action="{{ route('user.update', $user->id) }}" method="POST" class="form form-horizontal" enctype="multipart/form-data">
+                <form action="{{ route('users.update', $user->id) }}" method="POST" class="form form-horizontal">
                     @csrf
                     @method('PATCH')
                     <div class="form-body">
@@ -26,9 +26,9 @@
                             </div>
                             <fieldset class=" col-md-8 form-group">
                                 <select class="form-select @error('role') {{ 'is-invalid' }} @enderror" id="basicSelect" name="role">
-                                    <option value="">Pilih Kategori</option>    
+                                    <option value="">Pilih Role</option>    
                                     <option value="admin" @if($user->role == 'admin') selected @endif>Admin</option>    
-                                    <option value="member" @if($user->role == 'member') selected @endif>Member</option>    
+                                    <option value="member" @if($user->role == 'siswa') selected @endif>Siswa</option>    
                                 </select>
                                 @error('role')
                                     <span class="text-danger">{{ $message }}</span>
@@ -38,7 +38,7 @@
                                 <label>Email</label>
                             </div>
                             <div class="col-md-8 form-group">
-                                <input type="text" class="form-control @error('email') {{ 'is-invalid' }} @enderror" name="email" value="{{ old('email') ?? $user->email ?? '' }}">
+                                <input type="email" class="form-control @error('email') {{ 'is-invalid' }} @enderror" name="email" value="{{ old('email') ?? $user->email ?? '' }}">
                                 @error('email')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -52,22 +52,13 @@
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
-                            <div class="col-md-4">
-                                <label>Avatar</label>
-                            </div>
-                            <div class="col-md-8 form-group">
-                                <input class="form-control" type="file" name="avatar" value="{{ old('avatar') ?? $user->avatar ?? '' }}">
-                                @error('avatar')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
                             <div class="col-sm-12 d-flex justify-content-end">
                                 <button type="submit" class="btn btn-primary me-1 mb-1">Edit</button>
-                                <a href="{{ route('user.index') }}" class="btn btn-light-secondary me-1 mb-1">Batal</a>
+                                <a href="{{ route('users.index') }}" class="btn btn-light-secondary me-1 mb-1">Batal</a>
                             </div>
                         </div>
                     </div>
-                </form>
+                </form
             </div>
         </div>
     </div>
