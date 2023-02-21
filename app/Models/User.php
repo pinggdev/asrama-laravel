@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Absen;
 use App\Models\Siswa;
 use App\Models\Jadwal;
 use Illuminate\Notifications\Notifiable;
@@ -52,5 +53,10 @@ class User extends Authenticatable
     public function jadwals()
     {
         return $this->hasMany(Jadwal::class);
+    }
+
+    public function absens()
+    {
+        return $this->hasMany(Absen::class);
     }
 }

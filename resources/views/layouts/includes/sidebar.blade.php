@@ -67,6 +67,13 @@
                         <span>Jadwal</span>
                     </a>
                 </li>
+
+                <li class="sidebar-item">
+                    <a href="{{ route('absen.index') }}" class='sidebar-link'>
+                        <i class="bi bi-hexagon-fill"></i>
+                        <span>Absen</span>
+                    </a>
+                </li>
                 
                 @endif
             </ul>

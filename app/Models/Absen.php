@@ -3,17 +3,16 @@
 namespace App\Models;
 
 use App\Models\User;
-use App\Models\Absen;
+use App\Models\Jadwal;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Jadwal extends Model
+class Absen extends Model
 {
-    use HasFactory;
-
     protected $fillable = [
-        'nama_kegiatan',
-        'tanggal_kegiatan',
+        'user_id',
+        'jadwal_id',
+        'status',
     ];
 
     public function user()
@@ -21,8 +20,9 @@ class Jadwal extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function absens()
+    public function jadwal()
     {
-        return $this->hasMany(Absen::class);
+        return $this->belongsTo(Jadwal::class);
     }
 }
+
