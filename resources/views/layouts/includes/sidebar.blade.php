@@ -74,6 +74,13 @@
                         <span>Absen</span>
                     </a>
                 </li>
+
+                <li class="sidebar-item">
+                    <a href="{{ route('absen.rekapbulanan') }}" class='sidebar-link'>
+                        <i class="bi bi-hexagon-fill"></i>
+                        <span>Rekap Absen Bulanan</span>
+                    </a>
+                </li>
                 
                 @endif
 

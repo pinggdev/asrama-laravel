@@ -23,6 +23,7 @@ use App\Http\Controllers\Auth\RegisterController;
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('jadwal', JadwalController::class);
     Route::resource('absen', AbsenController::class);
+    Route::get('/rekapdata', [AbsenController::class, 'rekapBulanan'])->name('absen.rekapbulanan');
 });
 
 Route::group(['middleware' => ['auth', 'checkRole:admin']], function () {

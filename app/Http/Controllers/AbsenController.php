@@ -71,4 +71,67 @@ class AbsenController extends Controller
 
         return redirect()->route('absen.index')->with('success', 'Absen berhasil dihapus!');
     }
+
+    public function rekapBulanan(Request $request)
+    {
+        $users = User::where('role', 'siswa')->get();
+        $data = [];
+    
+        $bulan = $request->input('bulan');
+        if ($bulan) {
+            $absens = Absen::whereMonth('created_at', '=', $bulan)->get();
+            if ($absens->isEmpty()) {
+                foreach ($users as $user) {
+                    $hadir = 0;
+                    $tidak_hadir = 0;
+            
+                    foreach ($absens as $absen) {
+                        if ($absen->user_id == $user->id) {
+                            if ($absen->status == 'hadir') {
+                                $hadir++;
+                            } else {
+                                $tidak_hadir++;
+                            }
+                        }
+                    }
+            
+                    if ($hadir > 0 || $tidak_hadir > 0) {
+                        $data[] = [
+                            'user' => $user->name,
+                            'hadir' => $hadir,
+                            'tidak_hadir' => $tidak_hadir
+                        ];
+                    }
+                }
+            }
+        } else {
+            $absens = Absen::all();
+        }
+    
+        foreach ($users as $user) {
+            $hadir = 0;
+            $tidak_hadir = 0;
+    
+            foreach ($absens as $absen) {
+                if ($absen->user_id == $user->id) {
+                    if ($absen->status == 'hadir') {
+                        $hadir++;
+                    } else {
+                        $tidak_hadir++;
+                    }
+                }
+            }
+    
+            if ($hadir > 0 || $tidak_hadir > 0) {
+                $data[] = [
+                    'user' => $user->name,
+                    'hadir' => $hadir,
+                    'tidak_hadir' => $tidak_hadir
+                ];
+            }
+        }
+    
+        return view('admin.rekap.index', compact('data'));
+    }
+    
 }
